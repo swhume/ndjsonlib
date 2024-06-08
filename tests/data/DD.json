@@ -1,0 +1,158 @@
+{
+  "creationDateTime": "2024-01-09T20:33:41.019423",
+  "datasetJSONVersion": "1.0.0",
+  "fileOID": "www.cdisc.org.IG.AE",
+  "asOfDateTime": "2024-01-04T00:00:00",
+  "originator": "CDISC SDTM MSG Team",
+  "sourceSystem": "Sponsor System",
+  "sourceSystemVersion": "1.0",
+  "datasetType": "clinicalData",
+  "OID": "IG.DD",
+  "studyOID": "CDISCPILOT02",
+  "metaDataVersionOID": "MDV.MSGv2.0.SDTMIG.3.3.SDTM.1.7",
+  "metaDataRef": "https://metadata.location.org/CDISCPILOT01/define.xml",
+  "records": 3,
+  "name": "DD",
+  "label": "Death Details",
+  "columns": [
+    {
+      "OID": "ITEMGROUPDATASEQ",
+      "name": "ITEMGROUPDATASEQ",
+      "label": "Record Identifier",
+      "type": "integer"
+    },
+    {
+      "OID": "IT.AE.STUDYID",
+      "name": "STUDYID",
+      "label": "Study Identifier",
+      "type": "string",
+      "length": 12,
+      "keySequence": 1
+    },
+    {
+      "OID": "IT.AE.DOMAIN",
+      "name": "DOMAIN",
+      "label": "Domain Abbreviation",
+      "type": "string",
+      "length": 2
+    },
+    {
+      "OID": "IT.AE.USUBJID",
+      "name": "USUBJID",
+      "label": "Unique Subject Identifier",
+      "type": "string",
+      "length": 8,
+      "keySequence": 2
+    },
+    {
+      "OID": "IT.AE.DDSEQ",
+      "name": "DDSEQ",
+      "label": "Sequence Number",
+      "type": "integer",
+      "length": 3
+    },
+    {
+      "OID": "IT.AE.DDLNKID",
+      "name": "DDLNKID",
+      "label": "Link ID",
+      "type": "string",
+      "length": 50
+    },
+    {
+      "OID": "IT.AE.DDTESTCD",
+      "name": "DDTESTCD",
+      "label": "Death Detail Assessment Short Name",
+      "type": "string",
+      "length": 6,
+      "keySequence": 3
+    },
+    {
+      "OID": "IT.AE.DDTEST",
+      "name": "DDTEST",
+      "label": "Death Detail Assessment Name",
+      "type": "string",
+      "length": 22
+    },
+    {
+      "OID": "IT.AE.DDORRES",
+      "name": "DDORRES",
+      "label": "Result or Finding as Collected",
+      "type": "string",
+      "length": 200
+    },
+    {
+      "OID": "IT.AE.DDSTRESC",
+      "name": "DDSTRESC",
+      "label": "Character Result/Finding in Std Format",
+      "type": "string",
+      "length": 200
+    },
+    {
+      "OID": "IT.AE.EPOCH",
+      "name": "EPOCH",
+      "label": "Epoch",
+      "type": "string",
+      "length": 9
+    },
+    {
+      "OID": "IT.AE.DDDTC",
+      "name": "DDDTC",
+      "label": "Date/Time of Collection",
+      "type": "string"
+    },
+    {
+      "OID": "IT.AE.DDDY",
+      "name": "DDDY",
+      "label": "Study Day of Collection",
+      "type": "integer",
+      "length": 8
+    }
+  ],
+  "rows": [
+    [
+      1,
+      "CDISCPILOT01",
+      "AE",
+      "CDISC001",
+      1,
+      "9",
+      "PRCDTH",
+      "Primary Cause of Death",
+      "SUDDEN DEATH",
+      "SUDDEN DEATH",
+      "TREATMENT",
+      "2013-01-14",
+      61
+    ],
+    [
+      2,
+      "CDISCPILOT01",
+      "AE",
+      "CDISC008",
+      1,
+      "1",
+      "PRCDTH",
+      "Primary Cause of Death",
+      "COMPLETED SUICIDE",
+      "COMPLETED SUICIDE",
+      "TREATMENT",
+      "2014-11-01",
+      175
+    ],
+    [
+      3,
+      "CDISCPILOT01",
+      "AE",
+      "CDISC013",
+      1,
+      "1",
+      "PRCDTH",
+      "Primary Cause of Death",
+      "MYOCARDIAL INFARCTION",
+      "MYOCARDIAL INFARCTION",
+      "TREATMENT",
+      "2013-08-03",
+      13
+    ]
+  ]
+}

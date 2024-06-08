@@ -1,6 +1,5 @@
-import aiofiles
 import json
-import models.dataset as DS
+import ndjsonlib.models.dataset as DS
 
 
 class MetadataFile:

@@ -1,6 +1,6 @@
 import aiofiles
 import json
-import models.dataset as DS
+import ndjsonlib.models.dataset as DS
 
 
 class DataFile:
@@ -24,28 +24,39 @@ class DataFile:
                 rows.append(json.loads(line))
         return DS.RowData.model_dump(rows=rows)
 
-    async def read_chunk(self, start_row: int = None) -> list:
+    def read_chunk(self, start_row: int = None) -> list:
         rows = []
         if start_row is None:
             start_row = self.current_row + 1
-        async with aiofiles.open(self.filename) as f:
+        with open(self.filename, mode='r') as f:
             line_count = 0
-            async for line in f:
+            for line in f:
                 if line_count >= start_row:
                     rows.append(json.loads(line))
                 line_count += 1
-                if line_count >= self.chunk_size:
+                if self.chunk_size and line_count >= self.chunk_size:
                     break
         self.current_row = start_row + len(rows)
         return DS.RowData(rows=rows)
 
-    async def write_file(self, filename: str = None) -> None:
+    def write_file(self, filename: str = None) -> None:
         if filename is None:
             filename = self.filename
-        async with aiofiles.open(filename, mode='w') as f:
-            async for row in self.row_data:
-                await f.write(f"{json.dumps(row)}\n")
-            await f.flush()
+        with open(filename, mode='w') as f:
+            for row in self.row_data.rows:
+                f.write(f"{json.dumps(row)}\n")
+            f.flush()
+
+    def append_file(self, filename: str = None) -> int:
+        if filename is None:
+            filename = self.filename
+        row_counter = 0
+        with open(filename, mode='a') as f:
+            for row in self.row_data.rows:
+                f.write(f"{json.dumps(row)}\n")
+                row_counter += 1
+            f.flush()
+        return row_counter
 
     def show_file(self) -> None:
         with open(self.filename) as f:

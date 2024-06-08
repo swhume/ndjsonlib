@@ -1,18 +1,8 @@
-import services.metadata_file as MF
-import services.data_file as DF
-import services.json_data_file as JF
+import ndjsonlib.metadata_file as MF
+import ndjsonlib.data_file as DF
+import ndjsonlib.json_data_file as JF
+import ndjsonlib.dataset_name as DN
 import argparse
-import os
-
-
-def create_metadata_filename(directory: str, ds_name: str) -> str:
-    filename = os.path.join(directory, ds_name + "_metadata.ndjson")
-    return filename
-
-
-def create_data_filename(directory: str, ds_name: str) -> str:
-    filename = os.path.join(directory, ds_name + "_data.ndjson")
-    return filename
 
 
 def set_cmd_line_args():
@@ -34,21 +24,21 @@ def set_cmd_line_args():
 def main():
     args = set_cmd_line_args()
     # test reading and showing a metadata dataset
-    metadata_file = create_metadata_filename(args.directory, args.dataset_name)
-    mf = MF.MetadataFile(metadata_file)
+    dsn = DN.DatasetName(args.directory, args.dataset_name)
+    mf = MF.MetadataFile(dsn.get_metadata_filename())
     mf.read_file()
-    # mf.show_file()
+    mf.show_file()
 
     # test writing a metadata dataset file
-    metadata_out_file = create_metadata_filename("./data", "ae_out")
-    mf_out = MF.MetadataFile(metadata_out_file, mf.dataset_metadata, mf.column_metadata)
+    dsn = DN.DatasetName("./data", "ae_out")
+    mf_out = MF.MetadataFile(dsn.get_metadata_filename(), mf.dataset_metadata, mf.column_metadata)
     mf_out.write_file()
 
     # test reading and showing the data dataset
-    data_file = create_data_filename(args.directory, args.dataset_name)
-    df = DF.DataFile(data_file)
+    dsn = DN.DatasetName(args.directory, args.dataset_name)
+    df = DF.DataFile(dsn.get_data_filename(dsn.get_data_filename()))
     df.read_file()
-    # df.show_file()
+    df.show_file()
 
     # test reading ndjson but returning a json version
     jf = JF.JsonDataFile(args.dataset_name, args.directory)
