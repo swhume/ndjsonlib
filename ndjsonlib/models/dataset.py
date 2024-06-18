@@ -33,7 +33,7 @@ class DatasetMetadata(BaseModel):
     originator: Optional[str] = None
     sourceSystem: Optional[str] = None
     sourceSystemVersion: Optional[str] = None
-    datasetType: Optional[Literal["clinicalData", "referenceData"]]
+    datasetType: Optional[Literal["clinicalData", "referenceData"]] = None
     itemGroupOID: str
     studyOID: str
     metaDataVersionOID: Optional[str] = None
