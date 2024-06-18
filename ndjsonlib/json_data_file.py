@@ -12,6 +12,7 @@ class JsonDataFile:
         self.metadata_filename = dsn.get_metadata_filename()
         self.data_filename = dsn.get_data_filename()
         self.dataset_filename = dsn.get_full_dataset_filename()
+        self.dataset_json_filename = dsn.get_json_dataset_filename()
         self.creation_date_time = None
         self.chunk_size = chunk_size
         self.current_row = 0
@@ -39,6 +40,13 @@ class JsonDataFile:
         self.number_of_rows = len(dataset["rows"])
         return dataset
 
+    def read_full_json_dataset(self) -> json:
+        """ utility method that reads a JSON dataset for converstion to ndjson """
+        # TODO this will need to be enhanced for large datasets
+        with open(self.dataset_json_filename) as f:
+            dataset = json.load(f)
+        return dataset
+
     def write_dataset(self, dataset: dict) -> None:
         ds = DS.RowData(rows=dataset["rows"])
         df = DF.DataFile(filename=self.dataset_filename, row_data=ds)
@@ -47,6 +55,7 @@ class JsonDataFile:
         df.write_file(self.data_filename)
 
     def write_full_dataset(self, dataset: dict) -> None:
+        """ utility method that writes ndjson dataset as 1 combined file, metadata + data """
         ds = DS.RowData(rows=dataset["rows"])
         df = DF.DataFile(filename=self.data_filename, row_data=ds)
         del dataset['rows']
