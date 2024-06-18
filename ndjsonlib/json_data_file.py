@@ -68,7 +68,8 @@ class JsonDataFile:
     def read_metadata(self) -> json:
         dataset = self._read_metadata()
         self.number_of_rows = 0
-        return json.dumps(dataset)
+        # return json.dumps(dataset)
+        return dataset
 
     def _read_metadata(self) -> dict:
         mf = MF.MetadataFile(self.metadata_filename)

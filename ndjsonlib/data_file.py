@@ -22,7 +22,7 @@ class DataFile:
         with open(self.filename) as f:
             for line in f:
                 rows.append(json.loads(line))
-        return DS.RowData.model_dump(rows=rows)
+        return rows
 
     def read_chunk(self, start_row: int = None) -> list:
         rows = []
