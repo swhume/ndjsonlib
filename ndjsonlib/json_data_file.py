@@ -11,6 +11,7 @@ class JsonDataFile:
         dsn = DN.DatasetName(directory, ds_name)
         self.metadata_filename = dsn.get_metadata_filename()
         self.data_filename = dsn.get_data_filename()
+        self.dataset_filename = dsn.get_full_dataset_filename()
         self.creation_date_time = None
         self.chunk_size = chunk_size
         self.current_row = 0
@@ -40,10 +41,18 @@ class JsonDataFile:
 
     def write_dataset(self, dataset: dict) -> None:
         ds = DS.RowData(rows=dataset["rows"])
-        df = DF.DataFile(filename=self.data_filename, row_data=ds)
-        df.write_file(self.data_filename)
+        df = DF.DataFile(filename=self.dataset_filename, row_data=ds)
         del dataset['rows']
-        self.write_metadata(dataset)
+        self.write_metadata(dataset, self.metadata_filename)
+        df.write_file(self.data_filename)
+
+    def write_full_dataset(self, dataset: dict) -> None:
+        ds = DS.RowData(rows=dataset["rows"])
+        df = DF.DataFile(filename=self.data_filename, row_data=ds)
+        del dataset['rows']
+        self.write_metadata(dataset, self.dataset_filename)
+        rows_added = df.append_file(self.dataset_filename)
+        return rows_added
 
     def append_dataset(self, dataset: dict) -> int:
         ds = DS.RowData(rows=dataset["rows"])
@@ -79,7 +88,7 @@ class JsonDataFile:
         dataset['columns'] = columns["columns"]
         return dataset
 
-    def write_metadata(self, metadata: dict) -> None:
+    def write_metadata(self, metadata: dict, filename: str) -> None:
         columns = []
         for column in metadata["columns"]:
             columns.append(DS.Column(**column))
@@ -87,5 +96,5 @@ class JsonDataFile:
         del metadata["columns"]
         dataset_metadata = DS.DatasetMetadata(**metadata)
         mf = MF.MetadataFile(self.metadata_filename, dataset_metadata=dataset_metadata, column_metadata=column_metadata)
-        mf.write_file(self.metadata_filename)
+        mf.write_file(filename)
 

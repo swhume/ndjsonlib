@@ -14,12 +14,16 @@ class DatasetName:
             raise ValueError('Either a directory and dataset name or a full name (path with filename is required.')
         self.metadata_filename = self._create_metadata_filename()
         self.data_filename = self._create_data_filename()
+        self.dataset_filename = self._create_full_dataset_filename()
 
     def get_metadata_filename(self):
         return self.metadata_filename
 
     def get_data_filename(self):
         return self.data_filename
+
+    def get_full_dataset_filename(self):
+        return self.dataset_filename
 
     def get_path(self):
         return self.path
@@ -33,4 +37,8 @@ class DatasetName:
 
     def _create_data_filename(self) -> str:
         filename = os.path.join(self.path, self.ds_name + "_data.ndjson")
+        return filename
+
+    def _create_full_dataset_filename(self) -> str:
+        filename = os.path.join(self.path, self.ds_name + ".ndjson")
         return filename
