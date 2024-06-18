@@ -19,13 +19,13 @@
       "OID": "ITEMGROUPDATASEQ",
       "name": "ITEMGROUPDATASEQ",
       "label": "Record Identifier",
-      "type": "integer"
+      "dataType": "integer"
     },
     {
       "OID": "IT.AE.STUDYID",
       "name": "STUDYID",
       "label": "Study Identifier",
-      "type": "string",
+      "dataType": "string",
       "length": 12,
       "keySequence": 1
     },
@@ -33,14 +33,14 @@
       "OID": "IT.AE.DOMAIN",
       "name": "DOMAIN",
       "label": "Domain Abbreviation",
-      "type": "string",
+      "dataType": "string",
       "length": 2
     },
     {
       "OID": "IT.AE.USUBJID",
       "name": "USUBJID",
       "label": "Unique Subject Identifier",
-      "type": "string",
+      "dataType": "string",
       "length": 8,
       "keySequence": 2
     },
@@ -48,21 +48,21 @@
       "OID": "IT.AE.DDSEQ",
       "name": "DDSEQ",
       "label": "Sequence Number",
-      "type": "integer",
+      "dataType": "integer",
       "length": 3
     },
     {
       "OID": "IT.AE.DDLNKID",
       "name": "DDLNKID",
       "label": "Link ID",
-      "type": "string",
+      "dataType": "string",
       "length": 50
     },
     {
       "OID": "IT.AE.DDTESTCD",
       "name": "DDTESTCD",
       "label": "Death Detail Assessment Short Name",
-      "type": "string",
+      "dataType": "string",
       "length": 6,
       "keySequence": 3
     },
@@ -70,41 +70,41 @@
       "OID": "IT.AE.DDTEST",
       "name": "DDTEST",
       "label": "Death Detail Assessment Name",
-      "type": "string",
+      "dataType": "string",
       "length": 22
     },
     {
       "OID": "IT.AE.DDORRES",
       "name": "DDORRES",
       "label": "Result or Finding as Collected",
-      "type": "string",
+      "dataType": "string",
       "length": 200
     },
     {
       "OID": "IT.AE.DDSTRESC",
       "name": "DDSTRESC",
       "label": "Character Result/Finding in Std Format",
-      "type": "string",
+      "dataType": "string",
       "length": 200
     },
     {
       "OID": "IT.AE.EPOCH",
       "name": "EPOCH",
       "label": "Epoch",
-      "type": "string",
+      "dataType": "string",
       "length": 9
     },
     {
       "OID": "IT.AE.DDDTC",
       "name": "DDDTC",
       "label": "Date/Time of Collection",
-      "type": "string"
+      "dataType": "string"
     },
     {
       "OID": "IT.AE.DDDY",
       "name": "DDDY",
       "label": "Study Day of Collection",
-      "type": "integer",
+      "dataType": "integer",
       "length": 8
     }
   ],

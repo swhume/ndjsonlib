@@ -8,7 +8,8 @@ class Column(BaseModel):
     OID: Optional[str] = None
     name: str
     label: str
-    type: Literal["string", "integer", "decimal", "float", "double", "boolean"]
+    dataType: Literal["string", "integer", "decimal", "float", "double", "decimal", "datetime", "boolean"]
+    targetDataType: Optional[Literal["decimal", "integer"]] = None
     length: Optional[int] = None
     displayFormat: Optional[str] = None
     keySequence: Optional[int] = None
