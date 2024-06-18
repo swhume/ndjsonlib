@@ -7,7 +7,7 @@
   "sourceSystem": "Sponsor System",
   "sourceSystemVersion": "1.0",
   "datasetType": "clinicalData",
-  "OID": "IG.DD",
+  "itemGroupOID": "IG.DD",
   "studyOID": "CDISCPILOT02",
   "metaDataVersionOID": "MDV.MSGv2.0.SDTMIG.3.3.SDTM.1.7",
   "metaDataRef": "https://metadata.location.org/CDISCPILOT01/define.xml",
@@ -16,13 +16,13 @@
   "label": "Death Details",
   "columns": [
     {
-      "OID": "ITEMGROUPDATASEQ",
+      "itemOID": "ITEMGROUPDATASEQ",
       "name": "ITEMGROUPDATASEQ",
       "label": "Record Identifier",
       "dataType": "integer"
     },
     {
-      "OID": "IT.AE.STUDYID",
+      "itemOID": "IT.AE.STUDYID",
       "name": "STUDYID",
       "label": "Study Identifier",
       "dataType": "string",
@@ -30,14 +30,14 @@
       "keySequence": 1
     },
     {
-      "OID": "IT.AE.DOMAIN",
+      "itemOID": "IT.AE.DOMAIN",
       "name": "DOMAIN",
       "label": "Domain Abbreviation",
       "dataType": "string",
       "length": 2
     },
     {
-      "OID": "IT.AE.USUBJID",
+      "itemOID": "IT.AE.USUBJID",
       "name": "USUBJID",
       "label": "Unique Subject Identifier",
       "dataType": "string",
@@ -45,21 +45,21 @@
       "keySequence": 2
     },
     {
-      "OID": "IT.AE.DDSEQ",
+      "itemOID": "IT.AE.DDSEQ",
       "name": "DDSEQ",
       "label": "Sequence Number",
       "dataType": "integer",
       "length": 3
     },
     {
-      "OID": "IT.AE.DDLNKID",
+      "itemOID": "IT.AE.DDLNKID",
       "name": "DDLNKID",
       "label": "Link ID",
       "dataType": "string",
       "length": 50
     },
     {
-      "OID": "IT.AE.DDTESTCD",
+      "itemOID": "IT.AE.DDTESTCD",
       "name": "DDTESTCD",
       "label": "Death Detail Assessment Short Name",
       "dataType": "string",
@@ -67,41 +67,41 @@
       "keySequence": 3
     },
     {
-      "OID": "IT.AE.DDTEST",
+      "itemOID": "IT.AE.DDTEST",
       "name": "DDTEST",
       "label": "Death Detail Assessment Name",
       "dataType": "string",
       "length": 22
     },
     {
-      "OID": "IT.AE.DDORRES",
+      "itemOID": "IT.AE.DDORRES",
       "name": "DDORRES",
       "label": "Result or Finding as Collected",
       "dataType": "string",
       "length": 200
     },
     {
-      "OID": "IT.AE.DDSTRESC",
+      "itemOID": "IT.AE.DDSTRESC",
       "name": "DDSTRESC",
       "label": "Character Result/Finding in Std Format",
       "dataType": "string",
       "length": 200
     },
     {
-      "OID": "IT.AE.EPOCH",
+      "itemOID": "IT.AE.EPOCH",
       "name": "EPOCH",
       "label": "Epoch",
       "dataType": "string",
       "length": 9
     },
     {
-      "OID": "IT.AE.DDDTC",
+      "itemOID": "IT.AE.DDDTC",
       "name": "DDDTC",
       "label": "Date/Time of Collection",
       "dataType": "string"
     },
     {
-      "OID": "IT.AE.DDDY",
+      "itemOID": "IT.AE.DDDY",
       "name": "DDDY",
       "label": "Study Day of Collection",
       "dataType": "integer",

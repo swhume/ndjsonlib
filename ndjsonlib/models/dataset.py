@@ -5,7 +5,7 @@ from typing import Optional, List, Literal
 
 class Column(BaseModel):
     """ Dataset column, or variable, metadata attributes"""
-    OID: Optional[str] = None
+    itemOID: Optional[str] = None
     name: str
     label: str
     dataType: Literal["string", "integer", "decimal", "float", "double", "decimal", "datetime", "boolean"]
@@ -33,8 +33,8 @@ class DatasetMetadata(BaseModel):
     originator: Optional[str] = None
     sourceSystem: Optional[str] = None
     sourceSystemVersion: Optional[str] = None
-    datasetType: Literal["clinicalData", "referenceData"]
-    OID: str
+    datasetType: Optional[Literal["clinicalData", "referenceData"]]
+    itemGroupOID: str
     studyOID: str
     metaDataVersionOID: Optional[str] = None
     metaDataRef: Optional[AnyUrl] = None
