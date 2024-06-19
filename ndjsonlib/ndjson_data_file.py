@@ -32,26 +32,19 @@ class NdjsonDataFile:
         return self.rows
 
     def read_dataset(self) -> json:
-        # TODO will need to create a memory efficient means to transform dataset
+        # TODO will need to create a memory efficient means to transform large datasets
         with open(self.dataset_filename) as f:
             for line_num, line in enumerate(f, 1):
                 dataset_line = json.loads(line)
                 if line_num == DATASET_METADATA:
-                    # self.dataset_metadata = DS.DatasetMetadata(**json_line)
                     self.dataset_metadata = dataset_line
                 elif line_num == COLUMNS:
-                    # columns = []
-                    # for column in dataset_line["columns"]:
-                    #     columns.append(DS.Column(**column))
-                    # self.columns = DS.ColumnMetadata(columns=columns)
                     self.columns = dataset_line
                 else:
                     self.rows.append(dataset_line)
 
     def write_dataset_json(self, dataset_filename: str) -> None:
-        # TODO inefficient
-        dataset = self.dataset_metadata
-        dataset["columns"] = self.columns
+        dataset = self.dataset_metadata | self.columns
         dataset["rows"] = self.rows
         with open(dataset_filename, "w") as f:
             json.dump(dataset, f)
