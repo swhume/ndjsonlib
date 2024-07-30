@@ -1,12 +1,9 @@
 import json
-# import ndjsonlib.metadata_file as MF
-# import ndjsonlib.data_file as DF
 import ndjsonlib.dataset_name as DN
-# import ndjsonlib.models.dataset as DS
-# import datetime
 
-DATASET_METADATA = 1
-COLUMNS = 2
+METADATA = 1
+# DATASET_METADATA = 1
+# COLUMNS = 2
 
 class NdjsonDataFile:
     def __init__(self, ds_name: str, directory: str, chunk_size: int = 1000):
@@ -15,18 +12,18 @@ class NdjsonDataFile:
         self.chunk_size = chunk_size
         self.current_row = 0
         self.number_of_rows = 0
-        self.columns = None
-        self.dataset_metadata = None
+        # self.columns = None
+        self.metadata = None
         self.rows = []
 
     def get_row_count(self):
         return len(self.rows)
 
-    def get_dataset_metadata(self):
-        return self.dataset_metadata
+    def get_metadata(self):
+        return self.metadata
 
     def get_columns(self):
-        return self.columns
+        return self.metadata["columns"]
 
     def get_rows(self):
         return self.rows
@@ -36,15 +33,13 @@ class NdjsonDataFile:
         with open(self.dataset_filename) as f:
             for line_num, line in enumerate(f, 1):
                 dataset_line = json.loads(line)
-                if line_num == DATASET_METADATA:
-                    self.dataset_metadata = dataset_line
-                elif line_num == COLUMNS:
-                    self.columns = dataset_line
-                else:
+                if line_num > METADATA:
                     self.rows.append(dataset_line)
+                else:
+                    self.metadata = dataset_line
 
     def write_dataset_json(self, dataset_filename: str) -> None:
-        dataset = self.dataset_metadata | self.columns
+        dataset = self.metadata
         dataset["rows"] = self.rows
         with open(dataset_filename, "w") as f:
             json.dump(dataset, f)

@@ -5,18 +5,23 @@ from typing import Optional, List, Literal
 
 class Column(BaseModel):
     """ Dataset column, or variable, metadata attributes"""
-    itemOID: Optional[str] = None
+    itemOID: str
     name: str
     label: str
-    dataType: Literal["string", "integer", "decimal", "float", "double", "decimal", "datetime", "boolean"]
+    dataType: Literal["string", "integer", "decimal", "float", "double", "decimal", "datetime", "boolean", "date", "time", "URI"]
     targetDataType: Optional[Literal["decimal", "integer"]] = None
     length: Optional[int] = None
     displayFormat: Optional[str] = None
     keySequence: Optional[int] = None
 
 
-class ColumnMetadata(BaseModel):
-    columns: List[Column]
+class SourceSystem(BaseModel):
+    name: str
+    version: str
+
+
+# class ColumnMetadata(BaseModel):
+#     columns: List[Column]
 
 
 class RowData(BaseModel):
@@ -26,21 +31,18 @@ class RowData(BaseModel):
 
 class DatasetMetadata(BaseModel):
     """ Dataset-JSON ndjson metadata model """
-    creationDateTime: Optional[datetime.datetime] = datetime.datetime.utcnow()
+    datasetJSONCreationDateTime: Optional[datetime.datetime] = datetime.datetime.utcnow()
     datasetJSONVersion: Literal["1.0.0", "1.1.0"]
     fileOID: Optional[str] = None
-    asOfDateTime: Optional[datetime.datetime] = None
+    dbLastModifiedDateTime: Optional[datetime.datetime] = None
     originator: Optional[str] = None
-    sourceSystem: Optional[str] = None
-    sourceSystemVersion: Optional[str] = None
-    datasetType: Optional[Literal["clinicalData", "referenceData"]] = None
-    itemGroupOID: str
+    sourceSystem: Optional[SourceSystem] = None
     studyOID: str
     metaDataVersionOID: Optional[str] = None
     metaDataRef: Optional[str] = None
-    records: Optional[int] = 0
+    itemGroupOID: str
+    isReferenceData: Optional[bool] = False
+    records: int
     name: str
     label: str
-
-
-
+    columns: List[Column]

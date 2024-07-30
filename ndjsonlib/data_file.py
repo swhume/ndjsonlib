@@ -24,6 +24,21 @@ class DataFile:
                 rows.append(json.loads(line))
         return rows
 
+    def read_chunk_to_list(self, start_row: int = None) -> list:
+        rows = []
+        if start_row is None:
+            start_row = self.current_row + 1
+        with open(self.filename, mode='r') as f:
+            line_count = 0
+            for line in f:
+                if line_count >= start_row:
+                    rows.append(json.loads(line))
+                line_count += 1
+                if self.chunk_size and line_count >= self.chunk_size:
+                    break
+        self.current_row = start_row + len(rows)
+        return rows
+
     def read_chunk(self, start_row: int = None) -> list:
         rows = []
         if start_row is None:
