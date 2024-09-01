@@ -20,10 +20,6 @@ class SourceSystem(BaseModel):
     version: str
 
 
-# class ColumnMetadata(BaseModel):
-#     columns: List[Column]
-
-
 class RowData(BaseModel):
     """ Dataset-JSON records to append to an existing dataset """
     rows: List = []

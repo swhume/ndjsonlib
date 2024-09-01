@@ -9,8 +9,9 @@ class TestNdjsonDataFile(unittest.TestCase):
         nf = NF.NdjsonDataFile(ds_name="dd", directory="./data", chunk_size=1000)
         nf.read_dataset()
         self.assertEqual(nf.get_row_count(), 3)
-        metadata = nf.get_dataset_metadata()
+        metadata = nf.get_metadata()
         self.assertEqual(metadata["itemGroupOID"], "IG.DD")
+        self.assertEqual(metadata["dbLastModifiedDateTime"], "2024-01-04T00:00:00")
 
     def test_write_json_dataset(self):
         self._delete_test_dd_dataset()

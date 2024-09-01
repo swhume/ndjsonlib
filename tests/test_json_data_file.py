@@ -1,6 +1,7 @@
 import unittest
 import json
 import ndjsonlib.json_data_file as JF
+import ndjsonlib.ndjson_data_file as NF
 from pathlib import Path
 
 
@@ -11,6 +12,8 @@ class TestJsonDataFile(unittest.TestCase):
         dataset = jf.read_full_json_dataset()
         self.assertEqual(dataset["itemGroupOID"], "IG.DD")
         self.assertEqual(dataset["studyOID"], "CDISCPILOT02")
+        self.assertEqual(dataset["dbLastModifiedDateTime"], "2024-01-04T00:00:00")
+
     def test_write_full_dataset(self):
         """ tests writing ndjson as one file """
         self._delete_test_dd_dataset()
@@ -20,6 +23,9 @@ class TestJsonDataFile(unittest.TestCase):
         jf.write_full_dataset(data)
         is_dataset_file_exists = Path("../data/dd.ndjson").exists()
         self.assertTrue(is_dataset_file_exists)
+        nf = NF.NdjsonDataFile(ds_name="dd", directory="../data", chunk_size=1000)
+        nf.read_dataset()
+        self.assertEqual(nf.get_row_count(), 3)
 
     def _delete_test_dd_dataset(self):
         dataset_file = Path("../data/dd.ndjson")
