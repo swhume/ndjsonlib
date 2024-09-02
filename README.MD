@@ -1,7 +1,9 @@
 # ndjsonlib
 
 ## Introduction
-The ndjson module provides an interface to read and write Dataset-JSON as NDJSON. It can convert to and from the JSON
+![under development](https://img.shields.io/badge/under-development-blue)
+
+The ndjsonlib module provides an interface to read and write Dataset-JSON as NDJSON. It can convert to and from the JSON
 format of Dataset-JSON. It also supports storing NDJSON metadata and data as separate files and combining them for 
 data exchange. Maintaining the metadata in a separate file makes it simple to update the datasetJsonCreationDatetime 
 and the records attributes without requiring an application to re-write the entire file.
@@ -16,10 +18,10 @@ dataset. Basically, this class uses NDJSON as a data store for JSON inputs and o
 * **ndjson_data_file.py**: The NdjsonDataFile reads and writes NDJSON datasets as one file.
 
 ## Status
-The ndjson module has been updated to support Dataset-JSON v1.1 and is still under development. 
+The ndjsonlib module has been updated to support Dataset-JSON v1.1 and is still under development. 
 
 ## TODO
-1. Review class interfaces
+1. refine class interfaces
 2. complete documentation
 3. update tests
 
