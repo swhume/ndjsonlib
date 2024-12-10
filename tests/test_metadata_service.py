@@ -11,7 +11,7 @@ class TestMetadataService(unittest.TestCase):
         metadata = mf.get_metadata()
         self.assertEqual(metadata.fileOID, "www.cdisc.org/StudyMSGv2/1/Define-XML_2.1.0/2023-06-28/ae")
         self.assertEqual(str(metadata.dbLastModifiedDateTime), "2023-05-31 00:00:00")
-        self.assertEqual(metadata.columns[0].name, "ITEMGROUPDATASEQ")
+        self.assertEqual(metadata.columns[0].name, "STUDYID")
 
     def test_write_metadata_file(self):
         dsn_read = DN.DatasetName("../data", "ae")
@@ -23,7 +23,7 @@ class TestMetadataService(unittest.TestCase):
         mf_out.read_file()
         metadata = mf_out.get_metadata()
         self.assertEqual(metadata.fileOID, "www.cdisc.org/StudyMSGv2/1/Define-XML_2.1.0/2023-06-28/ae")
-        self.assertEqual(metadata.columns[0].name, "ITEMGROUPDATASEQ")
+        self.assertEqual(metadata.columns[0].name, "STUDYID")
 
 
 if __name__ == '__main__':
