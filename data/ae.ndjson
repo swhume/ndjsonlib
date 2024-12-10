@@ -1,6 +1,6 @@
 {
   "creationDateTime": "2023-12-19T09:44:58.427177",
-  "datasetJSONVersion": "1.0.0",
+  "datasetJSONVersion": "1.1.0",
   "fileOID": "www.cdisc.org/StudyMSGv2/1/Define-XML_2.1.0/2023-06-28/ae",
   "asOfDateTime": "2023-05-31T00:00:00",
   "originator": "CDISC SDTM MSG Team",

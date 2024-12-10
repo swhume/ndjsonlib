@@ -8,7 +8,7 @@ class Column(BaseModel):
     itemOID: str
     name: str
     label: str
-    dataType: Literal["string", "integer", "decimal", "float", "double", "decimal", "datetime", "boolean", "date", "time", "URI"]
+    dataType: Literal["string", "integer", "decimal", "float", "double", "datetime", "boolean", "date", "time", "URI"]
     targetDataType: Optional[Literal["decimal", "integer"]] = None
     length: Optional[int] = None
     displayFormat: Optional[str] = None
@@ -28,7 +28,7 @@ class RowData(BaseModel):
 class DatasetMetadata(BaseModel):
     """ Dataset-JSON ndjson metadata model """
     datasetJSONCreationDateTime: Optional[datetime.datetime] = datetime.datetime.utcnow()
-    datasetJSONVersion: Literal["1.0.0", "1.1.0"]
+    datasetJSONVersion: Literal["1.1", "1.1.0", "1.1.1", "1.1.2", "1.1.3", "1.1.4", "1.1.5"]
     fileOID: Optional[str] = None
     dbLastModifiedDateTime: Optional[datetime.datetime] = None
     originator: Optional[str] = None
@@ -37,7 +37,6 @@ class DatasetMetadata(BaseModel):
     metaDataVersionOID: Optional[str] = None
     metaDataRef: Optional[str] = None
     itemGroupOID: str
-    isReferenceData: Optional[bool] = False
     records: int
     name: str
     label: str
