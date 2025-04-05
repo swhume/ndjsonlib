@@ -29,13 +29,13 @@ class MetadataFile:
         """ returns the metadata as JSON """
         if self.metadata is None:
             self.read_file()
-        return self.metadata.model_dump(mode='json')
+        return self.metadata.model_dump(mode='json', exclude_none=True)
 
     def get_column_metadata_json(self) -> dict:
         """ returns the column metadata as JSON """
         if self.metadata is None:
             self.read_file()
-        return self.metadata["columns"].model_dump(mode='json')
+        return self.metadata["columns"].model_dump(mode='json', exclude_none=True)
 
     def read_file(self) -> None:
         """ read the metadata file into a DatasetMetadata object """
