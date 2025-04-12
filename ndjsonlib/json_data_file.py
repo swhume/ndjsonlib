@@ -85,6 +85,19 @@ class JsonDataFile:
         rows_added = df.append_file(self.dataset_filename)
         return rows_added
 
+    def write_full_dataset_from_files(self) -> None:
+        """ utility method that writes ndjson dataset as 1 combined file, from metadata + data ndjson files"""
+        dataset = self._read_metadata()
+        self.write_metadata(dataset, self.dataset_filename)
+        df = DF.DataFile(self.data_filename)
+        row_counter = 0
+        with open(self.dataset_filename, mode='a') as f:
+            for row in df.read_data_rows_iterator():
+                f.write(f"{row}")
+                row_counter += 1
+                f.flush()
+        return row_counter
+
     def append_dataset(self, dataset: dict) -> int:
         """ append rows to the dataset and then update the metadata creation datetime and records attributes """
         ds = DS.RowData(rows=dataset["rows"])
