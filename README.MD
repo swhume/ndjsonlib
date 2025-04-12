@@ -18,10 +18,11 @@ dataset. Basically, this class uses NDJSON as a data store for JSON inputs and o
 * **ndjson_data_file.py**: The NdjsonDataFile reads and writes NDJSON datasets as one file.
 
 ## Status
-The ndjsonlib module has been updated to support Dataset-JSON v1.1 and is still under development. 
+The ndjsonlib module has been updated to support Dataset-JSON v1.1 and is still under development. The ndjsonlib 
+module was originally developed to support the Dataset-JSON API Proof-of-Concept.
 
 ## TODO
-1. refine class interfaces
+1. refine API / class interfaces
 2. complete documentation
 3. update tests
 

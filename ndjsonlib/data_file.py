@@ -28,6 +28,12 @@ class DataFile:
             return rows
         return DS.RowData(rows=rows)
 
+    def read_data_rows_iterator(self) -> json:
+        """ utility method that reads the data rows of a large ndjson dataset incrementally """
+        with open(self.filename, 'r') as file:
+            for line in file:
+                yield line
+
     def read_chunk(self, start_row: int = None, is_return_list: bool = False) -> list:
         """
         reads a chunk_size number of rows into a RowData instance starting from start_row
