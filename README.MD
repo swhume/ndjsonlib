@@ -8,6 +8,9 @@ format of Dataset-JSON. It also supports storing NDJSON metadata and data as sep
 data exchange. Maintaining the metadata in a separate file makes it simple to update the datasetJsonCreationDatetime 
 and the records attributes without requiring an application to re-write the entire file.
 
+The ndjsonlib module was initiated to support a POC implementation of a draft Dataset-JSON API standard. The ndjsonlib
+module remains under development and its API will evolve.
+
 ## Basic Structure and Interfaces
 * **dataset_name.py**: Given the dataset name and the directory, the DatasetName class provides the file names needed for 
 the metadata and data parts of the NDJSON dataset.
