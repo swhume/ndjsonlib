@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='ndjsonlib',
-    version='0.0.1',
+    version='0.0.2',
     packages=['ndjsonlib'],
     url='https://github.com/swhume/ndjsonlib',
     license='MIT',
