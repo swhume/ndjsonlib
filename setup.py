@@ -17,7 +17,7 @@ setup(
     long_description_content_type="text/markdown",
     include_package_data=True,
     install_requires=[
-        "pydantic~=2.7.1",
+        "pydantic>=2.11.3",
         "ijson~=3.3.0",
     ]
 )
