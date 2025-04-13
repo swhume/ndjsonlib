@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name='ndjsonlib',
-    version='0.0.2',
+    version='0.0.3',
     packages=['ndjsonlib'],
     url='https://github.com/swhume/ndjsonlib',
     license='MIT',
@@ -17,7 +17,7 @@ setup(
     long_description_content_type="text/markdown",
     include_package_data=True,
     install_requires=[
-        "pydantic>=2.11.3",
+        "pydantic~=2.11.3",
         "ijson~=3.3.0",
     ]
 )
